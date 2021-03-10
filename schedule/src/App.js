@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import MyComponent from './myComponent';
+import Counter from './Counter';
 
 const App = () => {
-  return <MyComponent name="INSERT" Number={15}> Your React </MyComponent>;
+  return <Counter/>
 };
 
 export default App;
