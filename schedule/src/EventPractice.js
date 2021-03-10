@@ -1,60 +1,58 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class EventPractice extends Component {
-
-    state = {
+const EventPractice = () => {
+    const [form, setForm] = useState({
         username : '',
-        message : " "
+        message : ''
+    });
+    const { username, message } = form
+    // 복수의 input 처리 -> form 객체 생성하여 선언
+
+    // Setting Event handler
+    const onChange = e => {
+        const nextForm = {
+            ...form, // 기존 (가변 길이) form 내용을 복사함 ( 이 위치 )
+            [e.target.name] : e.target.value // 원하는 값 덮어 씌우기
+        }
+        setForm(nextForm)
     }
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name] : e.target.value // e.target.name => key값!
-            // (중요) event 객체 활용 -> 여러 개 input 처리 가능!
-        });
-    }
-
-    handleClick = () => {
-        alert(this.state.username + ": " + this.state.message);
-        this.setState({
+    const onClick = () => {
+        alert(username + " : " + message)
+        setForm({
             username: '',
-            message: '' // 다시 초기화 
-        });
+            message : ''
+        })
     }
 
-    handleKeyPress = (e) => {
+    const onKeyPress = (e) => {
         if(e.key === 'Enter') {
-            this.handleClick();
+            onClick();
         }
     }
 
-    render() {
-        return (
-            <div>
-                <h1>Practice Event!</h1>
-                <input
-                   type="text"
-                   name="username"
-                   placeholder="User-Name"
-                   value= {this.state.username}
-                   onChange={this.handleChange}
-                
-                    />
-                <input
-                   type="text"
-                   name="message"
-                   placeholder="Do Texting in here!"
-                   value= {this.state.message}
-                   onChange={this.handleChange}
-                   onKeyPress={this.handleKeyPress}
-                
-                    />
-                <button
-                   onClick={this.handleClick}
-                >확인</button>    
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h1>Practice Event!</h1>
+            <input
+               type="text"
+               name="username"
+               placeholder="User-Name"
+               value={username}
+               onChange={onChange}
+            />
+            <input
+               type="text"
+               name="message"
+               placeholder="Put Your Text Message!"
+               value={message}
+               onChange={onChange}
+               onKeyPress={onKeyPress}
+            />
+            <button onClick={onClick}>Check!</button>
+        </div>
+    );
+
 }
 
 export default EventPractice;
