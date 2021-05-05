@@ -10,7 +10,9 @@ const IterationSample = () => {
     const [inputText, setInputText] = useState('');
     const [nextId, setNextId] = useState(5); // 새로운 항목 추가 시 사용할 id
 
+
     const onChange = e => setInputText(e.target.value);
+    
     const onClick = () => {
         // concat => array 이어주는 내장함수(새로운 배열을 생성하여)
         const nextNames = names.concat({
@@ -23,7 +25,19 @@ const IterationSample = () => {
         setInputText(''); // inputText 비우기
     };
 
-    const nameList = names.map( name => <li key={name.id}>{name.text}</li>);
+    // data 제거하는 함수
+    const onRemove = id => {
+        const nextNames = names.filter(name => name.id !== id);
+        setNames(nextNames);
+    };
+
+    const nameList = names.map( name => 
+        // 더블클릭 -> onRemove 실행
+    <li key={name.id} onDoubleClick={() => onRemove(name.id)}>
+        {name.text}
+        </li>
+        );
+    
     return (
     <>
     <input value={inputText} onChange={onChange}/>
