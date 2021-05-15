@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import Counter from './Counter';
-import Info from './info'
+//import Counter from './Counter';
+//import Info from './info'
+import Average from './Average'
 
 const App = () => {
-  return <Counter/>;
+  return <Average/>;
 }
 
-/*
-const App = () => {
-  return <Info/>;
-}
-*/
 
 export default App;
