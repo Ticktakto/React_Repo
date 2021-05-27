@@ -6,8 +6,16 @@ import Home from './Home';
 const App = () => {
   return(
     <div>
-      <Route path='/' component={Home} exact={true} />
-      <Route path='/about' component={About} />
+      <ul>
+        <li>
+          <Link to="/">홈</Link>
+        </li>
+        <li>
+          <Link to="/about">소개</Link>
+        </li>
+      </ul>
+      <Route path="/" component={Home} exact={true} />
+      <Route path="/about" component={About} />
     </div>
   )
 }
