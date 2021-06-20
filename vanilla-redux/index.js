@@ -5,6 +5,7 @@ const counter = document.querySelector('h1');
 const btnIncrease = document.querySelector('#increase');
 const btnDecrease = document.querySelector('#decrease');
 
+// Action & Action Creator
 const TOGGLE_SWITCH = 'TOGGLE_SWITCH';
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
@@ -60,3 +61,21 @@ const render = () => {
 };
 
 render();
+// 이를 store 바뀔 때 마다 수행(redux.subscribe 이용)
+store.subscribe(render);
+
+// Make Action (redux.dispatch 이용)
+divToggle.onClick = () => {
+    console.log("TOGGLING");
+    store.dispatch(toggleSwitch());
+}
+
+btnIncrease.onClick = () => {
+    console.log("btnIncrease");
+    store.dispatch(increase(1));
+}
+
+btnDecrease.onClick = () => {
+    console.log("btnDecrease");
+    store.dispatch(decrease());
+};
