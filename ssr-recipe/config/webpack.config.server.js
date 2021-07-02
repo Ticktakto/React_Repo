@@ -32,7 +32,7 @@ module.exports = {
                     loader: require.resolve('babel-loader'),
                     options: {
                         customize: require.resolve(
-                            'babel-present-react-app/webpack-overrides'
+                            'babel-preset-react-app/webpack-overrides'
                         ),
                         presets: [
                             [
